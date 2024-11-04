@@ -13,4 +13,5 @@ string GuessedLetters::getLetters(){
 }
 void GuessedLetters::addLetter(char c){
     m_guessed.push_back(c);
+    m_guessed.push_back(' ');
 }
