@@ -15,10 +15,8 @@ string GameState::getState(){
     return w;
 }
 void GameState::addState(){
-    cout << "1" << endl;
     m_state.push_back(m_allStates[m_nextState]);
     m_nextState++;
-    cout << "I've added a state" << endl;
 }
 bool GameState::gameOver(){
     if (m_nextState == 7)
