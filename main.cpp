@@ -1,13 +1,20 @@
 #include <iostream>
 #include <cctype>
-#include "word.h"
+#include "Word.h"
 #include "guessedLetters.h"
 #include "gameState.h"
 using namespace std;
 
 int main()
 {
-    Word word("JUGGLE");
+    char ans;
+    string w;
+    do{
+    cout << "Enter the word, or press \"R\" to get a random word: ";
+    cin >> w;
+    Word word(w);
+    if(toupper(w[0]) == 'R' && w.length() == 1)
+        word.randomWord();
     GuessedLetters guessed = GuessedLetters();
     GameState state = GameState();
     char letter;
@@ -31,11 +38,16 @@ int main()
     if (state.gameOver()) {
        cout << endl << "Game state: " << state.getState() << endl;
        cout << "Sorry you lose"  << endl;
-       cout << "The word was: JUGGLE" << endl;
+       cout << "The word was: " << word.getFinalWord() << endl;
     }
     else {
         cout << endl << "Congratulations, you guessed the word: " <<  word.getWord() << endl;
     }
 
+    cout << "Press Y if you'd like to go again:/n "
+         << "Press anything else if you'd like to quit:/n ";
+    cin >> ans;
+
+    }while(toupper(ans) == 'Y');
     return 0;
 }
